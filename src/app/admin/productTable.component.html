@@ -1,0 +1,34 @@
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Category
+            </th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of getProducts()">
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.category}}</td>
+            <td>{{p.price | currency:"USD":"symbol":"2.2-2"}}</td>
+            <td class="text-center">
+<button class="btn btn-sm btn-info" [routerLink]="['/admin/main/products/edit', p.id]">
+Edit
+</button>
+<button class="btn btn-sm btn-danger m-2" (click)="deleteProduct(p.id)">
+    Delete
+    </button>
+            </td>
+        </tr> 
+    </tbody>
+</table>
+<button class="btn btn-block btn-primary" routerLink="/admin/main/products/create">Create New Products</button>
